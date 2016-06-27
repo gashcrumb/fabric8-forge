@@ -6,7 +6,7 @@ This project provides a REST service implemented via JAX-RS for interacting with
 
 [Install maven](http://maven.apache.org/download.cgi) then run:
 
-    mvn install jetty:run-war
+    mvn install
 
 ### Running
 
@@ -17,7 +17,7 @@ You need to define a few environment variables. e.g. point KUBERNETES_MASTER at 
 
 Then run:
 
-    mvn compile exec:java
+    mvn -Psample install jetty:run-war
 
 The REST API should be running now at [http://localhost:8080/](http://localhost:8080/) which should list some APIs you can invoke to try it out.
 
