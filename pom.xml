@@ -445,6 +445,21 @@
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
       </properties>
     </profile>
+    <profile>
+      <id>dev-deploy</id>
+      <distributionManagement>
+        <repository>
+          <id>dev.repo</id>
+          <name>forge instance</name>
+          <url>http://localhost:8080/repo</url>
+        </repository>
+        <snapshotRepository>
+          <id>dev.repo.snapshot</id>
+          <name>forge instance</name>
+          <url>http://localhost:8080/repo</url>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
   </profiles>
 
 </project>

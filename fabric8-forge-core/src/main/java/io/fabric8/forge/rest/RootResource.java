@@ -58,4 +58,5 @@ public class RootResource {
     public String ping() {
         return "true";
     }
+
 }

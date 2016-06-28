@@ -16,6 +16,7 @@
 package io.fabric8.forge.rest.main;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import io.fabric8.forge.rest.AddOnsResource;
 import io.fabric8.forge.rest.RootResource;
 import org.apache.cxf.feature.LoggingFeature;
 import io.fabric8.forge.rest.CommandsResource;
@@ -40,6 +41,9 @@ public class ForgeRestApplication extends Application {
     CommandsResource commandsResource;
 
     @Inject
+    AddOnsResource addOnsResource;
+
+    @Inject
     RepositoriesResource repositoriesResource;
 
     private boolean preloaded = false;
@@ -56,6 +60,7 @@ public class ForgeRestApplication extends Application {
                         rootResource,
                         commandsResource,
                         repositoriesResource,
+                        addOnsResource,
                         new JacksonJsonProvider(),
 /*
                         new SwaggerFeature(),
