@@ -447,16 +447,19 @@
     </profile>
     <profile>
       <id>dev-deploy</id>
+      <properties>
+        <repoHost>localhost:8080</repoHost>
+      </properties>
       <distributionManagement>
         <repository>
           <id>dev.repo</id>
           <name>forge instance</name>
-          <url>http://localhost:8080/repo</url>
+          <url>http://${repoHost}/repo</url>
         </repository>
         <snapshotRepository>
           <id>dev.repo.snapshot</id>
           <name>forge instance</name>
-          <url>http://localhost:8080/repo</url>
+          <url>http://${repoHost}/repo</url>
         </snapshotRepository>
       </distributionManagement>
     </profile>
