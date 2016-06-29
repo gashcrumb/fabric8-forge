@@ -58,8 +58,6 @@ public class AddOnsResource {
             IOUtils.copy(inputStream, outputStream);
         } catch (IOException e) {
             LOG.info("Failed to write to file: " + fullPath + " error: ", e);
-        } finally {
-            outputStream.close();
         }
         return Response.ok().build();
     }
@@ -79,14 +77,6 @@ public class AddOnsResource {
         } catch (FileNotFoundException e) {
             LOG.debug("Failed to find file: {}", fullPath);
             return Response.status(404).build();
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
         }
     }
 
