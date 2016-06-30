@@ -99,6 +99,20 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>org.jboss.forge.addon</groupId>
+      <artifactId>addons</artifactId>
+      <classifier>forge-addon</classifier>
+      <version>${jboss.forge.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.forge.addon</groupId>
+      <artifactId>addon-manager</artifactId>
+      <classifier>forge-addon</classifier>
+      <version>${jboss.forge.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>io.fabric8.archetypes</groupId>
       <artifactId>archetypes-catalog</artifactId>
       <version>${fabric8.archetypes.release.version}</version>
@@ -214,6 +228,8 @@
                 <addonId>io.fabric8.forge:funktion,${project.version}</addonId>
                 <addonId>io.fabric8.forge:introspection,${project.version}</addonId>
                 <addonId>org.jboss.forge.addon:git,${jboss.forge.version}</addonId>
+                <addonId>org.jboss.forge.addon:addon-manager,${jboss.forge.version}</addonId>
+                <addonId>org.jboss.forge.addon:addons,${jboss.forge.version}</addonId>
                 <addonId>org.jboss.forge.addon:wildfly-swarm,${wildfly.swarm.version}</addonId>
               </addonIds>
             </configuration>

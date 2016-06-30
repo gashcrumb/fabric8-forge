@@ -1,11 +1,9 @@
 package io.fabric8.forge.rest;
 
 
-import io.fabric8.forge.rest.main.ForgeInitialiser;
 import org.apache.cxf.helpers.IOUtils;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -21,8 +19,8 @@ import org.slf4j.LoggerFactory;
 @Path("/repo")
 @Produces(MediaType.APPLICATION_OCTET_STREAM)
 @Consumes(MediaType.APPLICATION_OCTET_STREAM)
-public class AddOnsResource {
-    private static final transient Logger LOG = LoggerFactory.getLogger(AddOnsResource.class);
+public class LocalRepoResource {
+    private static final transient Logger LOG = LoggerFactory.getLogger(LocalRepoResource.class);
 
     @PUT
     @Path("{path: .*}")
@@ -55,6 +53,8 @@ public class AddOnsResource {
             IOUtils.copy(inputStream, outputStream);
         } catch (IOException e) {
             LOG.info("Failed to write to file: " + fullPath + " error: ", e);
+        } finally {
+            outputStream.close();
         }
         return Response.ok().build();
     }
@@ -88,7 +88,7 @@ public class AddOnsResource {
         return parentPath;
     }
     private String pathToAddonFile(String path) {
-        return new File(path).getName();
+        return new File(path).getName().replaceAll("-[0-9]\\w+\\.[0-9]\\w+-[0-9]+", "-SNAPSHOT");
     }
 
 }
