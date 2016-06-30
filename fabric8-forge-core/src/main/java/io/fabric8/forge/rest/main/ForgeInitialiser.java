@@ -46,7 +46,6 @@ public class ForgeInitialiser {
     private static final transient Logger LOG = LoggerFactory.getLogger(ForgeInitialiser.class);
     public static final String DEFAULT_ARCHETYPES_VERSION = "2.2.34";
 
-    private String addOnDir;
     /**
      * @param addOnDir the directory where Forge addons will be stored
      */
@@ -54,7 +53,6 @@ public class ForgeInitialiser {
     public ForgeInitialiser(@ConfigProperty(name = "FORGE_ADDON_DIRECTORY", defaultValue = "./addon-repository") String addOnDir, FurnaceProducer furnaceProducer) {
         java.util.logging.Logger out = java.util.logging.Logger.getLogger(this.getClass().getName());
         out.info("Logging to JUL to test the configuration");
-        this.addOnDir = addOnDir;
         // lets ensure that the addons folder is initialised
         File repoDir = new File(addOnDir);
         repoDir.mkdirs();
@@ -160,9 +158,5 @@ public class ForgeInitialiser {
             return DEFAULT_ARCHETYPES_VERSION;
         }
         return answer;
-    }
-
-    public String getAddOnDir() {
-        return this.addOnDir;
     }
 }

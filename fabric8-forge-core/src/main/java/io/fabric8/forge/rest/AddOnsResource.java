@@ -24,9 +24,6 @@ import org.slf4j.LoggerFactory;
 public class AddOnsResource {
     private static final transient Logger LOG = LoggerFactory.getLogger(AddOnsResource.class);
 
-    @Inject
-    private ForgeInitialiser initialiser;
-
     @PUT
     @Path("{path: .*}")
     public Response putRepoFiles(@PathParam("path") String path, @Multipart(type = "application/octet-stream") InputStream inputStream, @Context HttpServletRequest request) throws IOException {
@@ -81,12 +78,13 @@ public class AddOnsResource {
     }
 
     private String getAddonDirectory() {
-        return this.initialiser.getAddOnDir();
+        String home = System.getProperty("user.home", "~/");
+        return Paths.get(home, ".m2", "repository").toString();
     }
 
     private String pathToAddonDir(String path) {
         File parent = new File(path).getParentFile();
-        String parentPath = parent.getPath().replace(File.separatorChar, '-').replace('.', '-');
+        String parentPath = parent.getPath();
         return parentPath;
     }
     private String pathToAddonFile(String path) {
