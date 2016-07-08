@@ -42,7 +42,7 @@ public class FurnaceProducer {
 		furnace = FurnaceFactory.getInstance(Thread.currentThread()
 				.getContextClassLoader(), Thread.currentThread()
 				.getContextClassLoader());
-		furnace.addRepository(AddonRepositoryMode.IMMUTABLE, repoDir);
+		furnace.addRepository(AddonRepositoryMode.MUTABLE, repoDir);
 		Future<Furnace> future = furnace.startAsync();
 
 		try {
