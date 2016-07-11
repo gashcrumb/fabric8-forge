@@ -448,18 +448,23 @@
     <profile>
       <id>dev-deploy</id>
       <properties>
-        <repoHost>localhost:8080</repoHost>
+        <!-- internal nexus
+        <repoHost>admin:admin123@nexus.vagrant.f8:80</repoHost>
+        <repoPath>/content/repositories/snapshots</repoPath>
+        -->
+        <repoHost>fabric8-forge.vagrant.f8</repoHost>
+        <repoPath>/repo</repoPath>
       </properties>
       <distributionManagement>
         <repository>
           <id>dev.repo</id>
           <name>forge instance</name>
-          <url>http://${repoHost}/repo</url>
+          <url>http://${repoHost}${repoPath}</url>
         </repository>
         <snapshotRepository>
           <id>dev.repo.snapshot</id>
           <name>forge instance</name>
-          <url>http://${repoHost}/repo</url>
+          <url>http://${repoHost}${repoPath}</url>
         </snapshotRepository>
       </distributionManagement>
     </profile>
